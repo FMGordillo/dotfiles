@@ -1,3 +1,13 @@
-- clean: []
-- link: {}
+- defaults:
+  link:
+    create: true
+    relink: true
+- clean: ["~"]
+- link: {
+  ~/.dotfiles: ''
+  ~/.oh-my-zsh: zsh/ohmyzsh/**
+  ~/.gitconfig:
+  ~/.p10k.zsh: zsh/p10k.zsh
+  ~/.zshrc: zsh/zshrc
+}
 - shell: []
