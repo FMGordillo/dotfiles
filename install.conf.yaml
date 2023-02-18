@@ -1,3 +1,17 @@
-- clean: []
-- link: {}
-- shell: []
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- clean: ['~']
+
+- link:
+  ~/.SpaceVim.d: spacevim
+  ~/.zshrc: zsh/zshrc
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
+  - [sudo apt update -y, Ubuntu - Get latest packages]
+  - [sudo apt upgrade -y, Ubuntu - Upgrade to latest packages]
+  - [curl -sLf https://spacevim.org/install.sh | bash, Installing SpaceVim]
+  - [chsh -s $(which zsh), Making zsh the default shell]
