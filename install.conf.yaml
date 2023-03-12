@@ -1,5 +1,6 @@
 - defaults:
     link:
+      create: true
       relink: true
 
 - clean: ['~']
@@ -11,5 +12,7 @@
 - link:
     ~/.gitconfig: gitconfig
     ~/.zshrc: zsh/.zshrc
+    ~/.oh-my-zsh/custom/plugins/: zsh/oh-my-zsh/custom/plugins/
+
 
 
