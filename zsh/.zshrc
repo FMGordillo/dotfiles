@@ -33,6 +33,8 @@ alias playground_postgres="docker run --rm --name postgres-playground -e POSTGRE
 export FLYCTL_INSTALL="/home/fmgordillo/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
+alias vim="sh ~/bin/squashfs-root/AppRun"
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -10,6 +10,7 @@
 - clean: ['~']
 
 - link:
+    ~/.config/nvim: nvim
     ~/.gitconfig: gitconfig
     ~/.zshrc: zsh/.zshrc
     ~/.oh-my-zsh/custom/plugins/: zsh/oh-my-zsh/custom/plugins/
