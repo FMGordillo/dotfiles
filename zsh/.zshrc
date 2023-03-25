@@ -41,3 +41,13 @@ alias vim="sh ~/bin/squashfs-root/AppRun"
 
 
 eval "$(/home/laspark/.local/share/rtx/bin/rtx activate -s zsh)"
+
+# Colors
+txtblk='\e[0;30m' # Black - Regular
+txtred='\e[0;31m' # Red
+txtgrn='\e[0;32m' # Green
+txtylw='\e[0;33m' # Yellow
+txtblu='\e[0;34m' # Blue
+txtpur='\e[0;35m' # Purple
+txtcyn='\e[0;36m' # Cyan
+txtwht='\e[0;37m' # White
