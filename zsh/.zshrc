@@ -40,7 +40,7 @@ alias vim="sh ~/bin/squashfs-root/AppRun"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
-eval "$(/home/laspark/.local/share/rtx/bin/rtx activate -s zsh)"
+eval "$(/home/$USER/.local/share/rtx/bin/rtx activate -s zsh)"
 
 # Colors
 txtblk='\e[0;30m' # Black - Regular
