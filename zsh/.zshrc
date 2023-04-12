@@ -30,11 +30,12 @@ alias stop_hear_my_mic="pactl unload-module module-loopback"
 # Playground aliases
 alias playground_postgres="docker run --rm --name postgres-playground -e POSTGRES_DB=admin -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -d postgres && docker exec -it postgres-playground psql -U admin -W admin"
 
-export FLYCTL_INSTALL="/home/fmgordillo/.fly"
+export FLYCTL_INSTALL="/home/$USER/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
-export PATH=/home/laspark/.local/bin:$PATH
+export PATH=/home/$USER/.local/bin:$PATH
 
 alias vim="sh ~/bin/squashfs-root/AppRun"
+alias tesseract="/home/$USER/Downloads/tesseract.AppImage"
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
