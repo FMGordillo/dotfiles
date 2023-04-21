@@ -18,6 +18,9 @@ sudo apt install ripgrep
 echo -e "${text} Installing rtx"
 curl https://rtx.pub/install.sh | sh
 
+echo -e "${text} Installing necessary packages for Python install"
+sudo apt install zlib1g zlib1g-dev libssl-dev libbz2-dev libsqlite3-dev libedit-dev
+
 text="${txtgrn}[Shell]${txtblk}"
 
 echo -e "${text} Installing zsh"
