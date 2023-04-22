@@ -100,6 +100,9 @@ lvim.plugins = {
   {
     "Exafunction/codeium.vim"
   },
+  {
+    'ThePrimeagen/harpoon'
+  }
 }
 
 -- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
@@ -110,3 +113,10 @@ lvim.plugins = {
 --     require("nvim-treesitter.highlight").attach(0, "bash")
 --   end,
 -- })
+lvim.builtin.which_key.mappings["h"] = {
+  name = "Harpoon",
+  r = { "<cmd>:lua require('harpoon.ui').toggle_quick_menu()<cr>", "Toggle UI" },
+  i = { "<cmd>:lua require('harpoon.mark').add_file()<cr>", "Add File" },
+  h = { "<cmd>:lua require('harpoon.ui').nav_next()<cr>", "Go to next" },
+  l = { "<cmd>:lua require('harpoon.ui').nav_prev()<cr>", "Go to previous" },
+}
