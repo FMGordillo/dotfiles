@@ -24,7 +24,7 @@ lvim.format_on_save = {
 -- keymappings <https://www.lunarvim.org/docs/configuration/keybindings>
 lvim.leader = "space"
 -- add your own keymapping
-lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+lvim.keys.normal_mode["<C-s>"] = ":w<CR>"
 lvim.keys.normal_mode["<ESC>"] = ":noh<CR><CR>"
 
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
@@ -50,7 +50,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- lvim.builtin.treesitter.ignore_install = { "haskell" }
 
 -- -- always installed on startup, useful for parsers without a strict filetype
--- lvim.builtin.treesitter.ensure_installed = { "comment", "markdown_inline", "regex" }
+-- lvim.builtin.treesitter.ensure_installed = { "windwp/nvim-ts-autotag" }
 
 -- -- generic LSP settings <https://www.lunarvim.org/docs/languages#lsp-support>
 
@@ -98,10 +98,44 @@ end, lvim.lsp.automatic_configuration.skipped_servers)
 -- -- Additional Plugins <https://www.lunarvim.org/docs/plugins#user-plugins>
 lvim.plugins = {
   {
-    "Exafunction/codeium.vim"
+    "Exafunction/codeium.vim",
+    config = function()
+      vim.keymap.set("i", "<C-y>", function() return vim.fn['codeium#Accept']() end, { expr = true })
+    end
   },
   {
     'ThePrimeagen/harpoon'
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
+  },
+  {
+    "romgrk/nvim-treesitter-context",
+    config = function()
+      require("treesitter-context").setup {
+        enable = true,   -- Enable this plugin (Can be enabled/disabled later via commands)
+        throttle = true, -- Throttles plugin updates (may improve performance)
+        max_lines = 0,   -- How many lines the window should span. Values <= 0 mean no limit.
+        patterns = {
+          -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
+          -- For all filetypes
+          -- Note that setting an entry here replaces all other patterns for this entry.
+          -- By setting the 'default' entry below, you can control which nodes you want to
+          -- appear in the context window.
+          default = {
+            'class',
+            'function',
+            'method',
+          },
+        },
+      }
+    end
+  },
+  {
+    'mbbill/undotree'
   }
 }
 
@@ -119,4 +153,9 @@ lvim.builtin.which_key.mappings["h"] = {
   i = { "<cmd>:lua require('harpoon.mark').add_file()<cr>", "Add File" },
   h = { "<cmd>:lua require('harpoon.ui').nav_next()<cr>", "Go to next" },
   l = { "<cmd>:lua require('harpoon.ui').nav_prev()<cr>", "Go to previous" },
+}
+
+lvim.builtin.which_key.mappings['u'] = {
+  name = "TreeToggle",
+  f = { "<cmd>:UndotreeToggle<cr>", "Toggle" },
 }
