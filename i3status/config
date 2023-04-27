@@ -17,7 +17,9 @@ order += "load"
 order += "tztime local"
 
 battery all {
-        format = "%status %percentage %remaining"
+        format = "%status %percentage (%remaining)"
+	status_chr = "⚡ CHR"
+        status_bat = "🔋 BAT"
 }
 
 tztime local {

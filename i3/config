@@ -195,6 +195,9 @@ bar {
 # CUSTOM KEYS START
 # ------------------------------------------
 
+# Keyboard layouts
+exec_always "setxkbmap -layout us,es -variant ,, -option grp:alt_shift_toggle"
+
 # Handle touchpad change
 exec --no-startup-id xinput set-prop 13 "libinput Tapping Enabled" 1
 exec --no-startup-id xinput set-prop 13 "libinput Natural Scrolling Enabled" 1
