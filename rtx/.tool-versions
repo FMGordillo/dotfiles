@@ -4,3 +4,5 @@ deno   1.25.0
 bun    0.5.9
 rust   1.68.2
 pnpm   8.3.1
+java   20.0.1
+maven  3.9.2
