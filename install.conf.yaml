@@ -11,6 +11,7 @@
 
 - link:
     ~/.config/i3: i3
+    ~/.wakatime.cfg: wakatime.cfg
     ~/.config/i3status: i3status
     ~/.config/kitty: kitty
     ~/.config/lvim: lvim
