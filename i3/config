@@ -49,7 +49,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -195,8 +195,11 @@ bar {
 # CUSTOM KEYS START
 # ------------------------------------------
 
+# Handle touchpad change
 exec --no-startup-id xinput set-prop 13 "libinput Tapping Enabled" 1
 exec --no-startup-id xinput set-prop 13 "libinput Natural Scrolling Enabled" 1
 
+# "Easy configuration for multiple monitors"
+exec always nitrogen --restore
 
 

@@ -12,6 +12,7 @@
 - link:
     ~/.config/i3: i3
     ~/.config/i3status: i3status
+    ~/.config/kitty: kitty
     ~/.config/lvim: lvim
     ~/.config/nvim: nvim
     ~/.config/tmux: tmux
@@ -21,6 +22,3 @@
     ~/.p10k.zsh: zsh/.p10k.zsh
     ~/.tool-versions: rtx/.tool-versions
     ~/.zshrc: zsh/.zshrc
-
-
-

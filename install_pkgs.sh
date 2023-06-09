@@ -9,6 +9,9 @@ sudo apt upgrade -y
 
 text="${txtgrn}[Additional libraries]${txtblk}"
 
+echo -e "${text} Installing kitty (terminal)"
+sudo apt install kitty -y
+
 echo -e "${text} Installing tmux"
 sudo apt install tmux -y
 
