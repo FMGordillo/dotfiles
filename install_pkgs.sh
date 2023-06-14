@@ -9,12 +9,18 @@ sudo apt upgrade -y
 
 text="${txtgrn}[Additional libraries]${txtblk}"
 
+echo -e "${text} Installing tmux"
+sudo apt install tmux -y
+
 echo -e "${text} Installing snap"
 sudo apt install snapd -y
 sudo snap install core
 
 echo -e "${text} Installing bat"
 sudo apt install bat -y
+
+echo -e "${text} Installing flameshot"
+sudo apt install flameshot -y
 
 echo -e "${text} Installing ripgrep"
 sudo apt install ripgrep
