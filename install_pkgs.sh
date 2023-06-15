@@ -9,11 +9,24 @@ sudo apt upgrade -y
 
 text="${txtgrn}[Additional libraries]${txtblk}"
 
+echo -e "${text} Installing snap"
+sudo apt install snapd -y
+sudo snap install core
+
 echo -e "${text} Installing bat"
 sudo apt install bat -y
 
 echo -e "${text} Installing ripgrep"
 sudo apt install ripgrep
+
+
+text="${txtgrn}[i3]${txtblk}"
+
+echo -e "${text} Installing rufi"
+sudo apt install -y i3
+
+echo -e "${text} Installing rufi (i3 search bar)"
+sudo apt install -y rufi
 
 echo -e "${text} Installing rtx"
 curl https://rtx.pub/install.sh | sh

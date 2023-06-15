@@ -33,6 +33,7 @@ alias playground_postgres="docker run --rm --name postgres-playground -e POSTGRE
 export FLYCTL_INSTALL="/home/$USER/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
 export PATH=/home/$USER/.local/bin:$PATH
+export PATH=/snap/bin:$PATH
 
 alias vim="sh ~/bin/squashfs-root/AppRun"
 alias tesseract="/home/$USER/Downloads/tesseract.AppImage"

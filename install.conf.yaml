@@ -12,6 +12,7 @@
 - link:
     ~/.gitconfig: gitconfig
     ~/.config/lvim: lvim
+    ~/.config/i3: i3
     ~/.config/nvim: nvim
     ~/.zshrc: zsh/.zshrc
     ~/.oh-my-zsh/custom/plugins/: zsh/oh-my-zsh/custom/plugins/
