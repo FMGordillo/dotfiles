@@ -45,6 +45,7 @@ alias tesseract="/home/$USER/Downloads/tesseract.AppImage"
 
 
 eval "$(/home/$USER/.local/share/rtx/bin/rtx activate -s zsh)"
+eval "$(configu autocomplete script zsh)"
 
 # Colors
 txtblk='\e[0;30m' # Black - Regular
