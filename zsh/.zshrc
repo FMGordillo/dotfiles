@@ -55,3 +55,9 @@ txtblu='\e[0;34m' # Blue
 txtpur='\e[0;35m' # Purple
 txtcyn='\e[0;36m' # Cyan
 txtwht='\e[0;37m' # White
+
+# To configure dual screen play with these values
+# xrandr --output DP1 --auto --left-of eDP1
+
+# To handle screen brightness, deal with these
+# xbacklight
