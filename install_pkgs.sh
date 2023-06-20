@@ -22,6 +22,9 @@ sudo snap install core
 echo -e "${text} Installing bat"
 sudo apt install bat -y
 
+echo -e "${text} Installing most"
+sudo apt install most -y
+
 echo -e "${text} Installing flameshot"
 sudo apt install flameshot -y
 
