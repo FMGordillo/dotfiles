@@ -191,6 +191,10 @@ bar {
         status_command i3status
 }
 
+# Hide title bar
+default_border pixel 1
+default_floating_border pixel 1
+
 # ------------------------------------------
 # CUSTOM KEYS START
 # ------------------------------------------
