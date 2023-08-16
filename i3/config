@@ -88,12 +88,6 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-# bindsym $mod+h split h
-
-# split in vertical orientation
-bindsym $mod+v split v
-
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
@@ -192,7 +186,7 @@ bar {
 }
 
 # Hide title bar
-default_border pixel 1
+default_border pixel 2
 default_floating_border pixel 1
 
 # ------------------------------------------

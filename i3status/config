@@ -20,6 +20,7 @@ battery all {
         format = "%status %percentage (%remaining)"
 	status_chr = "⚡ CHR"
         status_bat = "🔋 BAT"
+        status_full = "FULL"
 }
 
 tztime local {
