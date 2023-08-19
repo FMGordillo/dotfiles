@@ -16,12 +16,9 @@
     ~/.config/lvim: lvim
     ~/.config/nvim: nvim
     ~/.config/tmux: tmux
-    ~/.gitconfig: gitconfig
-    ~/.gitignore: gitignore
+    ~/.gitconfig: git/gitconfig
+    ~/.gitignore: git/gitignore
     ~/.local/bin: bin
-    ~/.oh-my-zsh/custom/plugins/: zsh/oh-my-zsh/custom/plugins/
-    ~/.oh-my-zsh/custom/themes/powerlevel10k: zsh/oh-my-zsh/custom/themes/powerlevel10k
-    ~/.p10k.zsh: zsh/.p10k.zsh
     ~/.tool-versions: rtx/.tool-versions
-    ~/.wakatime.cfg: wakatime.cfg
+    ~/.wakatime.cfg: wakatime/wakatime.cfg
     ~/.zshrc: zsh/.zshrc

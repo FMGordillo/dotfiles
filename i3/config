@@ -200,7 +200,5 @@ exec_always "setxkbmap -layout us,es -variant ,, -option grp:alt_shift_toggle"
 exec --no-startup-id xinput set-prop 13 "libinput Tapping Enabled" 1
 exec --no-startup-id xinput set-prop 13 "libinput Natural Scrolling Enabled" 1
 
-# "Easy configuration for multiple monitors"
-exec always nitrogen --restore
-
-
+# Set DPI
+exec xrdb -merge .Xresources
