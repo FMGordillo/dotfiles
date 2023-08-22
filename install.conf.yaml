@@ -13,7 +13,6 @@
     ~/.config/i3: i3
     ~/.config/i3status: i3status
     ~/.config/kitty: kitty
-    ~/.config/lvim: lvim
     ~/.config/nvim: nvim
     ~/.config/tmux: tmux
     ~/.gitconfig: git/gitconfig
