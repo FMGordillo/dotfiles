@@ -11,6 +11,3 @@
 [submodule "zsh/oh-my-zsh/custom/themes/powerlevel10k"]
 	path = zsh/oh-my-zsh/custom/themes/powerlevel10k
 	url = git@github.com:romkatv/powerlevel10k.git
-[submodule "nvim"]
-	path = nvim
-	url = git@github.com:FMGordillo/kickstart.nvim.git
