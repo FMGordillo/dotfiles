@@ -45,6 +45,9 @@ require('lazy').setup({
   'prettier/vim-prettier',
   'airblade/vim-gitgutter',
   'wakatime/vim-wakatime',
+  
+  -- Icons for Treesitter
+  'nvim-tree/nvim-web-devicons',
 
   
   {
@@ -133,6 +136,9 @@ require('lazy').setup({
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
     opts = {
+      dependencies = {
+        'nvim-tree/nvim-web-devicons'
+      },
       options = {
         icons_enabled = true,
         theme = 'palenight',
@@ -319,12 +325,6 @@ vim.opt.listchars:append "space:⋅"
 
 vim.o.smarttab = true
 
--- TODO: Add this for treesitter
--- autotag = {
---   enabled = true
--- }
-
-
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
@@ -443,6 +443,9 @@ require('nvim-treesitter.configs').setup {
         ['<leader>A'] = '@parameter.inner',
       },
     },
+    autotag = {
+      enabled = true
+    },
   },
 }
 
@@ -527,6 +530,7 @@ require('neodev').setup()
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
 
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
