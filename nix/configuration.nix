@@ -135,10 +135,9 @@ environment.systemPackages = with pkgs; [
 ];
 
 fonts = {
-	fontconfig = {
-		enable = true;
-	};
-	fonts = with pkgs; [ pkgs.dejavu_fonts ];
+	fonts = with pkgs; [
+		(nerdfonts.override { fonts = [ "CascadiaCode" ]; })
+	];
 };
 
 # Some programs need SUID wrappers, can be configured further or are
