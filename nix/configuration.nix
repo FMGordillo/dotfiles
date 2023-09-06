@@ -104,6 +104,7 @@ users = {
 				obs-studio
 				obsidian
 				python3
+				ranger					# File manager for i3
 				spotifyd
 				synology-drive-client
 				tmux					# Not getting the most out of it wget
