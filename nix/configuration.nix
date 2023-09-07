@@ -135,6 +135,7 @@ environment.systemPackages = with pkgs; [
 	git
 	keybase			# GPG keys
 	nerdfonts
+	neocomp			# Composition for X11?
 	nitrogen
 	nix-direnv
 	pavucontrol		# Audio manager?
