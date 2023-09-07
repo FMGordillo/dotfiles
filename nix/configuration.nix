@@ -84,6 +84,14 @@ windowManager.i3 = {
 	};
 };
 
+virtualisation.docker = {
+	enable = true;
+	rootless = {
+		enable = true;
+		setSocketVariable = true;
+	};
+};
+
 # Define a user account. Don't forget to set a password with ‘passwd’.
 users = {
 	defaultUserShell = pkgs.zsh;
@@ -91,8 +99,9 @@ users = {
 		fmgordillo = {
 			isNormalUser = true;
 			description = "Facundo Martin Gordillo";
-			extraGroups = [ "networkmanager" "audio" "wheel" ];
+			extraGroups = [ "networkmanager" "audio" "wheel" "docker" ];
 			packages = with pkgs; [
+				bat						# Replacement of 'cat'
 				brave
 				chromium
 				discord
@@ -109,6 +118,7 @@ users = {
 				synology-drive-client
 				tmux					# Not getting the most out of it wget
 				protonvpn-gui			# Not working right now :c
+				xclip					# Clipboard
 			];
 		};
 	};
@@ -189,9 +199,12 @@ programs.zsh = {
 services.trezord.enable = true;
 services.keybase.enable = true;
 
-nix.settings = {
-	keep-outputs = true;
-	keep-derivations = true;
+nix = {
+	extraOptions = ''experimental-features = nix-command'';
+	settings = {
+		keep-outputs = true;
+		keep-derivations = true;
+	};
 };
 
 environment.pathsToLink = [ "/share/nix-direnv" ];
