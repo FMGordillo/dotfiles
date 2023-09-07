@@ -1,4 +1,8 @@
 # Update time every 5 seconds
+[date]
+command=date +"%x"
+interval=5
+
 [time]
 command=date +%T
 interval=5
