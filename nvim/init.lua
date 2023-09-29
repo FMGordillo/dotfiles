@@ -46,6 +46,9 @@ require('lazy').setup({
   'airblade/vim-gitgutter',
   'wakatime/vim-wakatime',
 
+  -- Hide keys from prying eyes
+  'laytan/cloak.nvim',
+
   -- Icons for Treesitter
   'nvim-tree/nvim-web-devicons',
 
@@ -347,6 +350,30 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+require('cloak').setup {
+  enabled = true,
+  cloak_character = '*',
+  highlight_group = 'Comment',
+  cloak_length = nil,
+  try_all_patterns = true,
+  patterns = {
+    {
+      -- Match any file starting with '.env'.
+      -- This can be a table to match multiple file patterns.
+      file_pattern = '.env*',
+      -- Match an equals sign and any character after it.
+      -- This can also be a table of patterns to cloak,
+      -- example: cloak_pattern = { ':.+', '-.+' } for yaml files.
+      cloak_pattern = '=.+',
+      -- A function, table or string to generate the replacement.
+      -- The actual replacement will contain the 'cloak_character'
+      -- where it doesn't cover the original text.
+      -- If left emtpy the legacy behavior of keeping the first character is retained.
+      replace = nil,
+    },
+  },
+}
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
