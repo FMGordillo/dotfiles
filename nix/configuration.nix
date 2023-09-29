@@ -105,19 +105,21 @@ users = {
 				brave
 				chromium
 				discord
-				flameshot				# Screenshots
 				exa
+				flameshot				# Screenshots
 				jq						# JSON Formatter
+				kate					# Tiny IDE
 				kitty					# Terminal manager
 				neovim
 				obs-studio
 				obsidian
+				pcmanfm					# File manager?
+				protonvpn-gui			# Not working right now :c
 				python3
 				ranger					# File manager for i3
 				spotifyd
 				synology-drive-client
 				tmux					# Not getting the most out of it wget
-				protonvpn-gui			# Not working right now :c
 				xclip					# Clipboard
 			];
 		};
