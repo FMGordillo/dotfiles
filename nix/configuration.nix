@@ -113,13 +113,14 @@ users = {
 				neovim
 				obs-studio
 				obsidian
-				pcmanfm					# File manager?
+				pcmanfm					# File manager
 				protonvpn-gui			# Not working right now :c
 				python3
 				ranger					# File manager for i3
 				spotifyd
 				synology-drive-client
 				tmux					# Not getting the most out of it wget
+				trashy					# Replacement of rm -rf
 				xclip					# Clipboard
 			];
 		};
@@ -180,6 +181,7 @@ programs.zsh = {
 	shellAliases = {
 		bright = "brightnessctl";
 		cat = "bat";
+		rm = "trash";
 		fix_pinentry = "pkill -f gpg-agent; pkill -f pinentry && systemctl --user restart gpg-agent{.socket,-extra.socket,-ssh.socket}";
 		ls = "exa";
 		update = "sudo nixos-rebuild switch";
