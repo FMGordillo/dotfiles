@@ -68,19 +68,21 @@ i18n.extraLocaleSettings = {
 services.xserver = {
 	enable = true;
 	desktopManager = {
-	xterm.enable = false;
-};
-displayManager = {
-	defaultSession = "none+i3";
-};
-windowManager.i3 = {
-	enable = true;
-	extraPackages = with pkgs; [
-		dmenu # app launcher
-		i3status
-		i3lock
-		i3blocks
-	];
+		xterm.enable = false;
+	};
+	displayManager = {
+		defaultSession = "none+i3";
+	};
+	windowManager = {
+		i3 = {
+			enable = true;
+			extraPackages = with pkgs; [
+				dmenu # app launcher
+				i3blocks
+				i3lock
+				i3status
+			];
+		};
 	};
 };
 
@@ -116,7 +118,6 @@ users = {
 				pcmanfm					# File manager
 				protonvpn-gui			# Not working right now :c
 				python3
-				ranger					# File manager for i3
 				spotifyd
 				synology-drive-client
 				tmux					# Not getting the most out of it wget
@@ -210,6 +211,16 @@ nix = {
 		keep-outputs = true;
 		keep-derivations = true;
 	};
+};
+
+# X11 Composition, not more tearing!
+systemd.user.services.neocomp = {
+	description = "X11 Neocomp";
+	serviceConfig.PassEnvironment = "DISPLAY";
+	script = ''
+		neocomp
+	'';
+	wantedBy = [ "multi-user.target" ]; # starts after login
 };
 
 environment.pathsToLink = [ "/share/nix-direnv" ];

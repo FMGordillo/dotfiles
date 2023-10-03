@@ -23,3 +23,12 @@ interval=5
 [disk]
 command=df -h --output="avail" /dev/nvme0n1p5 | tr "\n" "," | awk -F ' ' '{print($2)}' | sed 's/^/FREE: /;s/,$//'
 interval=5
+
+# [i3volume]
+# label=
+# command=~/i3-volume/volume output i3blocks
+# interval=once
+# signal=10
+# color=#b8bb26
+# separator_block_width=10
+# markup=pango
