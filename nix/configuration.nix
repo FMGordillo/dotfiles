@@ -79,7 +79,7 @@ services.xserver = {
 			extraPackages = with pkgs; [
 				dmenu # app launcher
 				i3blocks
-				i3lock
+				i3lock-color
 				i3status
 			];
 		};
@@ -103,6 +103,7 @@ users = {
 			description = "Facundo Martin Gordillo";
 			extraGroups = [ "networkmanager" "audio" "wheel" "docker" ];
 			packages = with pkgs; [
+				teamviewer
 				bat						# Replacement of 'cat'
 				brave
 				chromium
@@ -136,11 +137,11 @@ environment.systemPackages = with pkgs; [
 	brightnessctl	# Control brightness in laptop
 	direnv
 	fd				# A simple, fast and user-friendly alternative to find
+	feh				# Wallpaper manager
 	git
 	keybase			# GPG keys
-	nerdfonts
 	neocomp			# Composition for X11?
-	nitrogen
+	nerdfonts
 	nix-direnv
 	pavucontrol		# Audio manager?
 	ripgrep

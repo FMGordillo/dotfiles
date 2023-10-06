@@ -1,4 +1,14 @@
-# Update time every 5 seconds
+# [caps_lock]
+# command=[ "$(xset q | grep "Caps Lock:" | awk '{print $4}')" == "on" ] && echo "CAPS 🔒"
+# align=left
+# interval=1
+# signal=10
+[caps-lock]
+command=[ "$(xset q | grep "Caps Lock:" | awk '{print $4}')" == "on" ] && echo "CAPS 🔒"
+align=center
+interval=once
+signal=10
+
 [date]
 command=date +"%x"
 interval=5
@@ -18,7 +28,7 @@ interval=5
 
 [battery]
 command=paste -d ' ' <(cat /sys/class/power_supply/BAT0/uevent | grep POWER_SUPPLY_STATUS | awk -F '=' '{print($2)}') <(cat /sys/class/power_supply/BAT0/uevent | grep POWER_SUPPLY_CAPACITY | awk -F '=' '{print($2)}' | sed 's/$/%/') | sed 's/^/BAT: /'
-interval=5
+interval=10
 
 [disk]
 command=df -h --output="avail" /dev/nvme0n1p5 | tr "\n" "," | awk -F ' ' '{print($2)}' | sed 's/^/FREE: /;s/,$//'
