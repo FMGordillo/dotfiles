@@ -42,7 +42,6 @@ require('lazy').setup({
   'tpope/vim-sleuth',
 
   'Exafunction/codeium.vim',
-  'prettier/vim-prettier',
   'airblade/vim-gitgutter',
   'wakatime/vim-wakatime',
 
@@ -238,12 +237,6 @@ require('lazy').setup({
             return
           end
 
-          -- Tsserver usually works poorly. Sorry you work with bad languages
-          -- You can remove this line if you know what you're doing :)
-          if client.name == 'tsserver' then
-            return
-          end
-
           -- Create an autocmd that will run *before* we save the buffer.
           --  Run the formatting command for the LSP that has just attached.
           vim.api.nvim_create_autocmd('BufWritePre', {
@@ -267,6 +260,7 @@ require('lazy').setup({
     end,
   },
 
+  { import = 'custom.plugins.format' },
 }, {})
 
 -- [[ Setting options ]]
@@ -549,13 +543,6 @@ end
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
-  -- html = { filetypes = { 'html', 'twig', 'hbs'} },
-
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
