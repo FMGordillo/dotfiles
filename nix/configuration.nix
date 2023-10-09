@@ -103,13 +103,13 @@ users = {
 			description = "Facundo Martin Gordillo";
 			extraGroups = [ "networkmanager" "audio" "wheel" "docker" ];
 			packages = with pkgs; [
-				teamviewer
 				bat						# Replacement of 'cat'
 				brave
 				chromium
 				discord
 				exa
 				flameshot				# Screenshots
+				flowblade				# Video editor
 				jq						# JSON Formatter
 				kate					# Tiny IDE
 				kitty					# Terminal manager
@@ -117,10 +117,12 @@ users = {
 				obs-studio
 				obsidian
 				pcmanfm					# File manager
+				peek					# Screen video capture
 				protonvpn-gui			# Not working right now :c
 				python3
 				spotifyd
 				synology-drive-client
+				teamviewer
 				tmux					# Not getting the most out of it wget
 				trashy					# Replacement of rm -rf
 				xclip					# Clipboard
@@ -140,12 +142,14 @@ environment.systemPackages = with pkgs; [
 	feh				# Wallpaper manager
 	git
 	keybase			# GPG keys
+	lxappearance	# Change theme and icons for i3
 	neocomp			# Composition for X11?
 	nerdfonts
 	nix-direnv
 	pavucontrol		# Audio manager?
 	ripgrep
-	rofi			# i3 apps
+	rofi			# Show i3 apps
+	rofimoji		# Show emojis like i3 apps
 	unzip			# Some packages needed it. >:c
 	vim
 	zig
@@ -196,6 +200,11 @@ programs.zsh = {
 	interactiveShellInit = ''
 		source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 	'';
+	# TODO: Review this crap
+	# interactiveShellInit = ''
+	# 	source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+	# 	source ${pkgs.trashy}/share/zsh/site-functions/_trash
+	# '';
 };
 
 
