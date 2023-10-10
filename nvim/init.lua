@@ -144,7 +144,7 @@ require('lazy').setup({
       },
       options = {
         icons_enabled = true,
-        theme = 'palenight',
+        theme = 'tokyonight',
         component_separators = '|',
         section_separators = '',
       },
