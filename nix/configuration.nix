@@ -103,6 +103,7 @@ users = {
 			description = "Facundo Martin Gordillo";
 			extraGroups = [ "networkmanager" "audio" "wheel" "docker" ];
 			packages = with pkgs; [
+				audacity				# Audio recording
 				bat						# Replacement of 'cat'
 				brave
 				chromium
