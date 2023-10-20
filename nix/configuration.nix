@@ -114,6 +114,7 @@ users = {
 				jq						# JSON Formatter
 				kate					# Tiny IDE
 				kitty					# Terminal manager
+				lazygit
 				neovim
 				obs-studio
 				obsidian
@@ -121,6 +122,7 @@ users = {
 				peek					# Screen video capture
 				protonvpn-gui			# Not working right now :c
 				python3
+				redshift				# Screen color temperature manager
 				spotifyd
 				synology-drive-client
 				teamviewer

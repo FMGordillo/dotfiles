@@ -14,6 +14,7 @@
     ~/.config/i3blocks: i3blocks
     ~/.config/kitty: kitty
     ~/.config/nvim: nvim
+    ~/.config/redshift.conf: redshift.conf
     ~/.config/tmux: tmux
     ~/.gitconfig: git/gitconfig
     ~/.gitignore: git/gitignore
