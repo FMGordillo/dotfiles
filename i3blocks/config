@@ -1,8 +1,3 @@
-# [caps_lock]
-# command=[ "$(xset q | grep "Caps Lock:" | awk '{print $4}')" == "on" ] && echo "CAPS 🔒"
-# align=left
-# interval=1
-# signal=10
 [caps-lock]
 command=[ "$(xset q | grep "Caps Lock:" | awk '{print $4}')" == "on" ] && echo "CAPS 🔒"
 align=center
@@ -10,7 +5,7 @@ interval=once
 signal=10
 
 [date]
-command=date +"%a %x - %T"
+command=./toggle_timezone.sh
 interval=1
 
 [weather]
