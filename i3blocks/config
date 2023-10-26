@@ -18,7 +18,8 @@ command=cat /sys/class/thermal/thermal_zone5/temp | awk '{print $1/1000 "ºC"}' 
 interval=5
 
 [battery]
-command=paste -d ' ' <(cat /sys/class/power_supply/BAT0/uevent | grep POWER_SUPPLY_STATUS | awk -F '=' '{print($2)}') <(cat /sys/class/power_supply/BAT0/uevent | grep POWER_SUPPLY_CAPACITY | awk -F '=' '{print($2)}' | sed 's/$/%/') | sed 's/^/BAT: /'
+command=paste -d ' ' <(cat /sys/class/power_supply/BAT0/uevent | grep POWER_SUPPLY_STATUS | awk -F '=' '{print($2)}' | sed 's/Charging/⚡/;s/Discharging/🔋/;s/Not charging/☂️/;s/Full/✅/') <(cat /sys/class/power_supply/BAT0/uevent | grep POWER_SUPPLY_CAPACITY | awk -F '=' '{print($2)}' | sed 's/$/%/')
+
 interval=10
 
 [disk]
