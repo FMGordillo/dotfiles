@@ -111,6 +111,7 @@ users = {
 				exa
 				flameshot				# Screenshots
 				flowblade				# Video editor
+				gimp					# Photo editor
 				jq						# JSON Formatter
 				kate					# Tiny IDE
 				kitty					# Terminal manager
@@ -128,7 +129,9 @@ users = {
 				teamviewer
 				tmux					# Not getting the most out of it wget
 				trashy					# Replacement of rm -rf
+				vlc
 				xclip					# Clipboard
+				zsh-powerlevel10k		# ZSH Theme
 			];
 		};
 	};
@@ -159,7 +162,10 @@ environment.systemPackages = with pkgs; [
 ];
 
 fonts = {
+	enableDefaultFonts = true;
 	fonts = with pkgs; [
+		ibm-plex
+		ubuntu_font_family
 		(nerdfonts.override { fonts = [ "CascadiaCode" ]; })
 	];
 };
@@ -197,12 +203,14 @@ programs.zsh = {
 	};
 	ohMyZsh = {
 		enable = true;
-		theme = "minimal";
 		plugins = [ "asdf" "direnv" "tmux" ];
 	};
 	interactiveShellInit = ''
 		source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+		source ${pkgs.trashy}/share/zsh/site-functions/_trash
+		source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
 	'';
+	
 	# TODO: Review this crap
 	# interactiveShellInit = ''
 	# 	source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh

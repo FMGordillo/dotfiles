@@ -50,6 +50,7 @@ require('lazy').setup({
   -- Icons for Treesitter
   'nvim-tree/nvim-web-devicons',
 
+  'ThePrimeagen/harpoon',
 
   {
     'akinsho/toggleterm.nvim',
@@ -116,12 +117,6 @@ require('lazy').setup({
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
       },
-      on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>g[', require('gitsigns').prev_hunk,
-          { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
-        vim.keymap.set('n', '<leader>g]', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
-        vim.keymap.set('n', '<leader>gp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[G]it [P]review Hunk' })
-      end,
     },
   },
 
@@ -146,6 +141,10 @@ require('lazy').setup({
         theme = 'tokyonight',
         component_separators = '|',
         section_separators = '',
+      },
+      sections = {
+        lualine_b = { 'filename' },
+        lualine_c = { 'branch' },
       },
     },
   },
@@ -260,6 +259,18 @@ vim.opt.listchars:append "space:⋅"
 vim.o.smarttab = true
 
 -- [[ Basic Keymaps ]]
+
+-- Git signs
+local gitsigns = require('gitsigns')
+vim.keymap.set('n', '[g', gitsigns.prev_hunk, { buffer = bufnr, desc = 'Previous [G]it hunk' })
+vim.keymap.set('n', ']g', gitsigns.next_hunk, { buffer = bufnr, desc = 'Next [G]it hunk' })
+vim.keymap.set('n', '<leader>gp', gitsigns.preview_hunk, { buffer = bufnr, desc = '[G]it [P]review Hunk' })
+
+-- Harpoon keymaps
+vim.keymap.set('n', '[h', require('harpoon.ui').nav_prev, { buffer = bufnr, desc = 'Previous [H]arpoon file' })
+vim.keymap.set('n', ']h', require('harpoon.ui').nav_next, { buffer = bufnr, desc = 'Next [H]arpoon file' })
+vim.keymap.set('n', '<leader>ha', require('harpoon.mark').add_file, { buffer = bufnr, desc = '[H]arpoon: [A]dd file' })
+vim.keymap.set('n', '<leader>hq', require('harpoon.ui').toggle_quick_menu, { buffer = bufnr, desc = '[H]arpoon: [Q]uicklist' })
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
