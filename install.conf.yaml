@@ -10,6 +10,7 @@
 - clean: ['~']
 
 - link:
+    ~/.config/.Xresources: i3/Xresources
     ~/.config/i3: i3
     ~/.config/i3blocks: i3blocks
     ~/.config/kitty: kitty

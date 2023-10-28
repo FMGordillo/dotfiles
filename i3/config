@@ -232,7 +232,7 @@ exec --no-startup-id xinput set-prop 13 "libinput Tapping Enabled" 1
 exec --no-startup-id xinput set-prop 13 "libinput Natural Scrolling Enabled" 1
 
 # Set DPI
-exec xrdb -merge .Xresources
+exec xrdb -merge ~/.config/.Xresources
 
 # Set layout (should fail if no external display is connected)
 exec --no-startup-id autorandr --load horizontal-reverse
