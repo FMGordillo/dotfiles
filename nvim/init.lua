@@ -260,11 +260,12 @@ vim.o.smarttab = true
 
 -- [[ Basic Keymaps ]]
 
--- Git signs
+-- Git
 local gitsigns = require('gitsigns')
 vim.keymap.set('n', '[g', gitsigns.prev_hunk, { buffer = bufnr, desc = 'Previous [G]it hunk' })
 vim.keymap.set('n', ']g', gitsigns.next_hunk, { buffer = bufnr, desc = 'Next [G]it hunk' })
 vim.keymap.set('n', '<leader>gp', gitsigns.preview_hunk, { buffer = bufnr, desc = '[G]it [P]review Hunk' })
+vim.keymap.set('n', '<leader>gu', gitsigns.reset_hunk, { buffer = bufnr, desc = '[G]it [U]ndo Stage Hunk' })
 
 -- Harpoon keymaps
 vim.keymap.set('n', '[h', require('harpoon.ui').nav_prev, { buffer = bufnr, desc = 'Previous [H]arpoon file' })
