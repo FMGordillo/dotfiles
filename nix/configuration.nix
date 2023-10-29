@@ -129,7 +129,7 @@ users = {
 				synology-drive-client
 				teamviewer
 				tmux					# Not getting the most out of it wget
-				trashy					# Replacement of rm -rf
+				trash-cli				# safe rm
 				vlc
 				xclip					# Clipboard
 				zsh-powerlevel10k		# ZSH Theme
@@ -197,26 +197,19 @@ programs.zsh = {
 	shellAliases = {
 		bright = "brightnessctl";
 		cat = "bat";
-		rm = "trash";
 		fix_pinentry = "pkill -f gpg-agent; pkill -f pinentry && systemctl --user restart gpg-agent{.socket,-extra.socket,-ssh.socket}";
 		ls = "exa";
+		rm = "echo 'This is not the command you are looking for.'; false";
 		update = "sudo nixos-rebuild switch";
 	};
 	ohMyZsh = {
 		enable = true;
-		plugins = [ "asdf" "direnv" "tmux" ];
+		plugins = [ "git" "direnv" "tmux" ];
 	};
 	interactiveShellInit = ''
 		source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-		source ${pkgs.trashy}/share/zsh/site-functions/_trash
 		source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
 	'';
-	
-	# TODO: Review this crap
-	# interactiveShellInit = ''
-	# 	source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-	# 	source ${pkgs.trashy}/share/zsh/site-functions/_trash
-	# '';
 };
 
 

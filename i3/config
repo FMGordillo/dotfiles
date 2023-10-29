@@ -245,3 +245,10 @@ exec --no-startup-id xrandr --output DP-1 --mode 2560x1440
 # App allocation to workspaces
 # ------------------------------------------
 # for_window [class="brave"] move to workspace $ws2
+
+
+# ------------------------------------------
+# CUSTOM APPS AT STARTUP
+# ------------------------------------------
+exec --no-startup-id i3-msg 'workspace 1:Web; exec brave'
+exec --no-startup-id i3-msg 'workspace 9:Plan; exec appimage-run ~/Lunatask-1.7.7.AppImage'
