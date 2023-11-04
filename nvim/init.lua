@@ -159,7 +159,7 @@ require('lazy').setup({
       },
       sections = {
         lualine_b = { 'filename' },
-        lualine_c = { 'branch' },
+        lualine_c = { 'diagnostics', 'branch' },
         lualine_x = { 'tabnine', 'encoding', 'fileformat', 'filetype' },
       },
     },
