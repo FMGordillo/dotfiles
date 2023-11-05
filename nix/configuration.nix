@@ -110,6 +110,7 @@ users = {
 				chromium
 				discord
 				exa
+				firefox-devedition
 				flameshot				# Screenshots
 				flowblade				# Video editor
 				gimp					# Photo editor
