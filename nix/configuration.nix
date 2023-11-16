@@ -127,6 +127,7 @@ users = {
 				python3
 				redshift				# Screen color temperature manager
 				spotifyd
+				spotify_player			# TUI Player that works really well
 				synology-drive-client
 				teamviewer
 				tmux					# Not getting the most out of it wget
