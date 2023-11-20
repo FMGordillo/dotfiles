@@ -32,6 +32,7 @@ vim.opt.rtp:prepend(lazypath)
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
+  { "LazyVim/LazyVim", import = "lazyvim.plugins" },
   -- NOTE: First, some plugins that don't require any configuration
 
   -- Git related plugins
@@ -40,22 +41,6 @@ require('lazy').setup({
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
-
-  {
-    'codota/tabnine-nvim',
-    build = "./dl_binaries.sh", 
-    config = function()
-      require('tabnine').setup({
-        disable_auto_comment=true,
-        accept_keymap="<C-CR>",
-        dismiss_keymap = "<C-]>",
-        debounce_ms = 800,
-        suggestion_color = {gui = "#808080", cterm = 244},
-        exclude_filetypes = {"TelescopePrompt", "NvimTree"},
-        log_file_path = nil, -- absolute path to Tabnine log file
-      })
-    end
-},
 
   'wakatime/vim-wakatime',
 
@@ -100,6 +85,50 @@ require('lazy').setup({
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
     },
+---@type lspconfig.options
+    servers = {
+      eslint = {
+        settings = {
+          -- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
+          workingDirectory = { mode = "auto" },
+        },
+      },
+    },
+  setup = {
+    eslint = function()
+      local function get_client(buf)
+        return require("lazyvim.util").lsp.get_clients({ name = "eslint", bufnr = buf })[1]
+      end
+
+      local formatter = require("lazyvim.util").lsp.formatter({
+        name = "eslint: lsp",
+        primary = false,
+        priority = 200,
+        filter = "eslint",
+      })
+
+      -- Use EslintFixAll on Neovim < 0.10.0
+      if not pcall(require, "vim.lsp._dynamic") then
+        formatter.name = "eslint: EslintFixAll"
+        formatter.sources = function(buf)
+          local client = get_client(buf)
+          return client and { "eslint" } or {}
+        end
+        formatter.format = function(buf)
+          local client = get_client(buf)
+          if client then
+            local diag = vim.diagnostic.get(buf, { namespace = vim.lsp.diagnostic.get_namespace(client.id) })
+            if #diag > 0 then
+              vim.cmd("EslintFixAll")
+            end
+          end
+        end
+      end
+
+      -- register the formatter with LazyVim
+      require("lazyvim.util").format.register(formatter)
+    end,
+  },
   },
 
   {
@@ -160,7 +189,7 @@ require('lazy').setup({
       sections = {
         lualine_b = { 'filename' },
         lualine_c = { 'diagnostics', 'branch' },
-        lualine_x = { 'tabnine', 'encoding', 'fileformat', 'filetype' },
+        lualine_x = { 'codeium', 'encoding', 'fileformat', 'filetype' },
       },
     },
   },
@@ -210,7 +239,32 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
-  { import = 'kickstart.plugins.autoformat' },
+  { import = "lazyvim.plugins.extras.linting.eslint" },
+  {
+    "stevearc/conform.nvim",
+    optional = true,
+    opts = {
+      formatters_by_ft = {
+        ["javascript"] = { "quick-lint-js" },
+        ["javascriptreact"] = { "quick-lint-js" },
+        ["typescript"] = { "quick-lint-js" },
+        ["typescriptreact"] = { "quick-lint-js" },
+        ["vue"] = { "quick-lint-js" },
+        ["css"] = { "quick-lint-js" },
+        ["scss"] = { "quick-lint-js" },
+        ["less"] = { "quick-lint-js" },
+        ["html"] = { "quick-lint-js" },
+        ["json"] = { "quick-lint-js" },
+        ["jsonc"] = { "quick-lint-js" },
+        ["yaml"] = { "quick-lint-js" },
+        ["markdown"] = { "quick-lint-js" },
+        ["markdown.mdx"] = { "quick-lint-js" },
+        ["graphql"] = { "quick-lint-js" },
+        ["handlebars"] = { "quick-lint-js" },
+        ["lua"] = { "stylua" },
+      },
+    },
+  },
 }, {})
 
 -- [[ Setting options ]]
@@ -492,9 +546,28 @@ local on_attach = function(_, bufnr)
   end, '[W]orkspace [L]ist Folders')
 
   -- Create a command `:Format` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-    vim.lsp.buf.format()
-  end, { desc = 'Format current buffer with LSP' })
+  -- vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
+  --   vim.lsp.buf.format()
+  -- end, { desc = 'Format current buffer with LSP' })
+
+
+  -- Create a command `:Format` local using conform.nvim
+  vim.api.nvim_create_user_command("Format", function(args)
+    local range = nil
+    if args.count ~= -1 then
+      local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+      range = {
+        start = { args.line1, 0 },
+        ["end"] = { args.line2, end_line:len() },
+      }
+    end
+    require("conform").format({
+      async = true,
+      notify_on_error = false,
+      lsp_fallback = true,
+      range = range
+    })
+  end, { range = true })
 end
 
 -- Enable the following language servers
