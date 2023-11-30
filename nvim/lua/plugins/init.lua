@@ -9,6 +9,8 @@
 -- * override the configuration of LazyVim plugins
 return {
   {
+    "wakatime/vim-wakatime",
+
     "tzachar/cmp-tabnine",
     build = {
       -- Util.is_win() and "pwsh -noni .\\install.ps1" or "./install.sh",
