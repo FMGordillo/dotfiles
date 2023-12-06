@@ -109,7 +109,7 @@ users = {
 				brave
 				chromium
 				discord
-				exa
+				eza
 				firefox-devedition
 				flameshot				# Screenshots
 				flowblade				# Video editor
@@ -123,11 +123,9 @@ users = {
 				obsidian
 				pcmanfm					# File manager
 				peek					# Screen video capture
-				protonvpn-gui			# Not working right now :c
 				python3
 				redshift				# Screen color temperature manager
 				spotifyd
-				spotify_player			# TUI Player that works really well
 				synology-drive-client
 				teamviewer
 				tmux					# Not getting the most out of it wget
@@ -165,8 +163,8 @@ environment.systemPackages = with pkgs; [
 ];
 
 fonts = {
-	enableDefaultFonts = true;
-	fonts = with pkgs; [
+	enableDefaultPackages = true;
+	packages = with pkgs; [
 		ibm-plex
 		ubuntu_font_family
 		(nerdfonts.override { fonts = [ "CascadiaCode" ]; })
@@ -200,7 +198,7 @@ programs.zsh = {
 		bright = "brightnessctl";
 		cat = "bat";
 		fix_pinentry = "pkill -f gpg-agent; pkill -f pinentry && systemctl --user restart gpg-agent{.socket,-extra.socket,-ssh.socket}";
-		ls = "exa";
+		ls = "eza";
 		rm = "echo 'This is not the command you are looking for.'; false";
 		update = "sudo nixos-rebuild switch";
 	};
@@ -231,6 +229,7 @@ nix = {
 };
 
 # X11 Composition, not more tearing!
+# Currently not working
 systemd.user.services.neocomp = {
 	description = "X11 Neocomp";
 	serviceConfig.PassEnvironment = "DISPLAY";
