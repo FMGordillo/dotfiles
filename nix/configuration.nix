@@ -112,13 +112,11 @@ users = {
 				eza
 				firefox-devedition
 				flameshot				# Screenshots
-				flowblade				# Video editor
 				gimp					# Photo editor
 				jq						# JSON Formatter
 				kate					# Tiny IDE
 				kitty					# Terminal manager
 				lazygit
-				neovim
 				obs-studio
 				obsidian
 				pcmanfm					# File manager
@@ -128,7 +126,6 @@ users = {
 				spotifyd
 				synology-drive-client
 				teamviewer
-				tmux					# Not getting the most out of it wget
 				trash-cli				# safe rm
 				vlc
 				xclip					# Clipboard
@@ -147,6 +144,7 @@ environment.systemPackages = with pkgs; [
 	direnv
 	fd				# A simple, fast and user-friendly alternative to find
 	feh				# Wallpaper manager
+	fzf
 	git
 	keybase			# GPG keys
 	lxappearance	# Change theme and icons for i3
@@ -158,7 +156,6 @@ environment.systemPackages = with pkgs; [
 	rofi			# Show i3 apps
 	rofimoji		# Show emojis like i3 apps
 	unzip			# Some packages needed it. >:c
-	vim
 	zig
 ];
 
@@ -178,6 +175,11 @@ fonts = {
 #   enable = true;
 #   enableSSHSupport = true;
 # };
+
+programs.neovim = {
+	enable = true;
+};
+
 services.pcscd.enable = true;
 programs.gnupg.agent = {
 	enable = true;
@@ -204,11 +206,13 @@ programs.zsh = {
 	};
 	ohMyZsh = {
 		enable = true;
-		plugins = [ "git" "direnv" "tmux" ];
+		plugins = [ "git" "direnv" "fzf" "zsh-vi-mode" ];
 	};
 	interactiveShellInit = ''
-		source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 		source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+		source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/direnv/direnv.plugin.zsh
+		source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/fzf/fzf.plugin.zsh
+		source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/mode.plugin.zsh
 	'';
 };
 
