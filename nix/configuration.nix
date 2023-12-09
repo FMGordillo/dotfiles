@@ -206,13 +206,13 @@ programs.zsh = {
 	};
 	ohMyZsh = {
 		enable = true;
-		plugins = [ "git" "direnv" "fzf" "zsh-vi-mode" ];
+		plugins = [ "git" "direnv" "fzf" "vi-mode" ];
 	};
 	interactiveShellInit = ''
 		source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
 		source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/direnv/direnv.plugin.zsh
 		source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/fzf/fzf.plugin.zsh
-		source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/mode.plugin.zsh
+		source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/vi-mode/vi-mode.plugin.zsh
 	'';
 };
 
