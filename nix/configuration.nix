@@ -33,8 +33,14 @@ imports =
 
 
 # Bootloader.
-boot.loader.systemd-boot.enable = true;
+/*
+boot.loader.grub.enable = true;
+boot.loader.grub.efiSupport = true;
+boot.loader.grub.device = "nodev";
 boot.loader.efi.canTouchEfiVariables = true;
+boot.loader.efi.efiSysMountPoint = "/boot/efi";
+boot.loader.grub.useOSProber = true;
+*/
 
 networking.hostName = "nixos"; # Define your hostname.
 # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -106,6 +112,7 @@ users = {
 				appimage-run			# Run AppImage
 				audacity				# Audio recording
 				bat						# Replacement of 'cat'
+				bitwig-studio			# Audio production
 				brave
 				chromium
 				discord
@@ -139,6 +146,7 @@ users = {
 # $ nix search wget
 environment.systemPackages = with pkgs; [
 	appimage-run
+	acpi
 	autorandr		# Multiple monitor manager?
 	brightnessctl	# Control brightness in laptop
 	direnv
