@@ -26,6 +26,7 @@
   # environment.
   home.packages = [
     #pkgs.reaper
+	pkgs.brave
 	pkgs.discord
 	pkgs.gimp
 	pkgs.obs-studio

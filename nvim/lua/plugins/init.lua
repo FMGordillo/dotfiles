@@ -49,23 +49,26 @@ return {
         which_key = true,
       },
     },
-
-    "wakatime/vim-wakatime",
-
-    "tzachar/cmp-tabnine",
-    build = {
-      -- Util.is_win() and "pwsh -noni .\\install.ps1" or "./install.sh",
-      "./install.sh",
-      ":CmpTabnineHub",
+  },
+  "wakatime/vim-wakatime",
+  {
+    "nvim-cmp",
+    dependencies = {
+      -- codeium
+      {
+        "Exafunction/codeium.nvim",
+        cmd = "Codeium",
+        build = ":Codeium Auth",
+        opts = {},
+      },
     },
-    dependencies = "hrsh7th/nvim-cmp",
-    opts = {
-      max_lines = 1000,
-      max_num_results = 3,
-      sort = true,
-    },
-    config = function(_, opts)
-      require("cmp_tabnine.config"):setup(opts)
+    ---@param opts cmp.ConfigSchema
+    opts = function(_, opts)
+      table.insert(opts.sources, 1, {
+        name = "codeium",
+        group_index = 1,
+        priority = 100,
+      })
     end,
   },
   {
