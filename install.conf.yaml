@@ -11,14 +11,14 @@
 
 - link:
     ~/.config/.Xresources: i3/Xresources
+    ~/.config/home-manager: nix/home-manager
     ~/.config/i3: i3
     ~/.config/i3blocks: i3blocks
-    ~/.config/home-manager: nix/home-manager
     ~/.config/kitty: kitty
     ~/.config/nvim: nvim
     ~/.config/tmux: tmux
+    ~/.config/zsh: zsh
     ~/.gitconfig: git/gitconfig
     ~/.gitignore: git/gitignore
     ~/.local/bin: bin
     ~/.tool-versions: rtx/.tool-versions
-    ~/.zshrc: zsh/.zshrc
