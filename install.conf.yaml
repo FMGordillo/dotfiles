@@ -3,23 +3,22 @@
       create: true
       relink: true
 
-- clean: ['~']
+- clean: ["~"]
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
-- clean: ['~']
+    - [git submodule update --init --recursive, Installing submodules]
+- clean: ["~"]
 
 - link:
     ~/.config/.Xresources: i3/Xresources
     ~/.config/i3: i3
     ~/.config/i3blocks: i3blocks
+    ~/.config/home-manager: nix/home-manager
     ~/.config/kitty: kitty
     ~/.config/nvim: nvim
-    ~/.config/redshift.conf: redshift.conf
     ~/.config/tmux: tmux
     ~/.gitconfig: git/gitconfig
     ~/.gitignore: git/gitignore
     ~/.local/bin: bin
     ~/.tool-versions: rtx/.tool-versions
-    ~/.wakatime.cfg: wakatime/wakatime.cfg
     ~/.zshrc: zsh/.zshrc
