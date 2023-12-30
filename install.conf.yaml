@@ -21,4 +21,5 @@
     ~/.gitconfig: git/gitconfig
     ~/.gitignore: git/gitignore
     ~/.local/bin: bin
+    ~/.ssh: ssh
     ~/.tool-versions: rtx/.tool-versions
