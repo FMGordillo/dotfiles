@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   nixpkgs.config.allowUnfree = true;
 
   nixpkgs.config.permittedInsecurePackages = [
@@ -26,13 +29,16 @@
   # environment.
   home.packages = [
     #pkgs.reaper
-	pkgs.brave
-	pkgs.discord
-	pkgs.gimp
-	pkgs.obs-studio
-	pkgs.protonvpn-gui
-	pkgs.ripgrep
-	pkgs.xclip
+    #pkgs.anki-bin
+    #pkgs.android-studio
+    pkgs.brave
+    pkgs.discord
+    pkgs.gimp
+    pkgs.obs-studio
+    pkgs.protonvpn-gui
+    pkgs.ripgrep
+    pkgs.ungoogled-chromium
+    pkgs.xclip
     pkgs.ansible
     pkgs.audacity
     pkgs.bat
@@ -41,15 +47,14 @@
     pkgs.lazygit
     pkgs.obsidian
     pkgs.spotifyd
-    pkgs.tabnine
     pkgs.trash-cli
     pkgs.zig
     pkgs.zsh-powerlevel10k
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
+    # # parentheses. Maybe you want to install Nerd Fonts with a limited numberrustc of
     # # fonts?
-    (pkgs.nerdfonts.override { fonts = [ "UbuntuMono" ]; })
+    (pkgs.nerdfonts.override {fonts = ["UbuntuMono"];})
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -58,11 +63,15 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
     pkgs.nodejs
+    # Node packages
+    pkgs.bun
+	pkgs.nodePackages.pnpm
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
+    # TODO: Improve it with this!
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
@@ -119,30 +128,30 @@
   };
 
   programs.zsh = {
+    enable = true;
+    enableAutosuggestions = true;
+    enableCompletion = true;
+    dotDir = ".config/zsh";
+    syntaxHighlighting = {
       enable = true;
-      enableAutosuggestions = true;
-      enableCompletion = true;
-      dotDir = ".config/zsh";
-      syntaxHighlighting = {
-        enable = true;
-      };
-      oh-my-zsh = {
-        enable = true;
-        plugins = [ "git" "direnv" "fzf" "vi-mode"];
-      };
-      initExtra = ''
-	[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-        source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-        source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/direnv/direnv.plugin.zsh
-        source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/fzf/fzf.plugin.zsh
-        source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/vi-mode/vi-mode.plugin.zsh
-        				'';
-      };
-
-    programs.fzf = {
-      enable = true;
-      enableZshIntegration = true;
     };
+    oh-my-zsh = {
+      enable = true;
+      plugins = ["git" "direnv" "fzf" "vi-mode"];
+    };
+    initExtra = ''
+      [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+             source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+             source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/direnv/direnv.plugin.zsh
+             source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/fzf/fzf.plugin.zsh
+             source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/vi-mode/vi-mode.plugin.zsh
+    '';
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   programs.git = {
     enable = true;
@@ -151,7 +160,7 @@
   };
 
   programs.direnv = {
-      enable = true;
+    enable = true;
   };
 
   services = {
@@ -161,6 +170,29 @@
     ssh-agent.enable = true;
   };
 
+  xsession.enable = true;
+
+  xsession.windowManager.i3 = {
+    enable = true;
+    #desktopManager.default = "none";
+    #windowManager.default = "i3";
+    #windowManager.i3 = {
+    #	enable = true;
+    package = pkgs.i3-gaps;
+    #	extraPackages = with pkgs; [
+    #		dmenu # app launcher
+    #		i3blocks
+    #		i3lock-color
+    #		i3status
+    #	];
+    #};
+    #layout = "us";
+    #xkbVariant = "intl";
+    #libinput.enable = true;
+    #displayManager.auto = { enable = true; user = "fmgordillo"; };
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
+
