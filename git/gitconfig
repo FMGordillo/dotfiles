@@ -2,12 +2,17 @@
 	name = Facundo Martin Gordillo
 	email = me@facundogordillo.com
 	signinkey = 7CFA49CEF8267772
+
 [core]
 	editor = nvim
 	autocrlf = false
 	excludesFile = '~/.gitignore'
+
 [init]
 	defaultBranch = main
 
 [pull]
 	rebase = true
+
+[commit]
+  gpgsign = true
