@@ -31,23 +31,25 @@
     #pkgs.reaper
     #pkgs.anki-bin
     #pkgs.android-studio
-    pkgs.brave
-    pkgs.discord
-    pkgs.gimp
-    pkgs.obs-studio
-    pkgs.protonvpn-gui
-    pkgs.ripgrep
-    pkgs.ungoogled-chromium
-    pkgs.xclip
+	pkgs.parallel
+	pkgs.vscodium
     pkgs.ansible
     pkgs.audacity
     pkgs.bat
     pkgs.bitwig-studio
+    pkgs.brave
+    pkgs.discord
     pkgs.eza
+    pkgs.gimp
     pkgs.lazygit
+    pkgs.obs-studio
     pkgs.obsidian
+    pkgs.protonvpn-gui
+    pkgs.ripgrep
     pkgs.spotifyd
     pkgs.trash-cli
+    pkgs.ungoogled-chromium
+    pkgs.xclip
     pkgs.zig
     pkgs.zsh-powerlevel10k
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -112,17 +114,6 @@
     EDITOR = "nvim";
   };
 
-  programs.bash = {
-    enable = true;
-    sessionVariables = {
-      EDITOR = "nvim";
-    };
-    initExtra = ''
-      . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
-      if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
-    '';
-  };
-
   programs.neovim = {
     enable = true;
   };
@@ -135,11 +126,17 @@
     syntaxHighlighting = {
       enable = true;
     };
+	sessionVariables = {
+		NODE_PATH = "~/.npm-packages/lib/node_modules";
+		PNPM_HOME = "~/.local/share/pnpm";
+		PATH = "~/.local/share/pnpm:$PATH";
+	};
     oh-my-zsh = {
       enable = true;
       plugins = ["git" "direnv" "fzf" "vi-mode"];
     };
     initExtra = ''
+	. "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
       [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
              source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
              source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/direnv/direnv.plugin.zsh
