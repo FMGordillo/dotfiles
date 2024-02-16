@@ -52,26 +52,6 @@ return {
   },
   "wakatime/vim-wakatime",
   {
-    "nvim-cmp",
-    dependencies = {
-      -- codeium
-      {
-        "Exafunction/codeium.nvim",
-        cmd = "Codeium",
-        build = ":Codeium Auth",
-        opts = {},
-      },
-    },
-    ---@param opts cmp.ConfigSchema
-    opts = function(_, opts)
-      table.insert(opts.sources, 1, {
-        name = "codeium",
-        group_index = 1,
-        priority = 100,
-      })
-    end,
-  },
-  {
     "stevearc/conform.nvim",
     optional = true,
     opts = {
@@ -267,6 +247,25 @@ return {
         theme = "catppuccin"
       }
     end,
+  },
+
+  {
+    "epwalsh/obsidian.nvim",
+    version = "*",
+    lazy = true,
+    ft = "markdown",
+    dependencies = {
+      -- Required.
+      "nvim-lua/plenary.nvim",
+    },
+    opts = {
+      workspaces = {
+        {
+          name = "main",
+          path = "~/Drive/obsidian_vault"
+        }
+      },
+    },
   },
 
   -- or you can return new options to override all the defaults
