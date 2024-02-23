@@ -17,6 +17,7 @@
     ~/.config/kitty: kitty
     ~/.config/nvim: nvim
     ~/.config/tmux: tmux
+    ~/.config/warp-terminal: warp-terminal
     ~/.config/zsh: zsh
     ~/.gitconfig: git/gitconfig
     ~/.gitignore: git/gitignore
