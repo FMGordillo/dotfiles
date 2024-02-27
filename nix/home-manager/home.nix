@@ -31,8 +31,9 @@
     #pkgs.reaper
     #pkgs.anki-bin
     #pkgs.android-studio
-	pkgs.parallel
-	pkgs.vscodium
+    pkgs.parallel
+    pkgs.vscodium
+    pkgs.alejandra
     pkgs.ansible
     pkgs.audacity
     pkgs.bat
@@ -66,7 +67,7 @@
     pkgs.nodejs
     # Node packages
     pkgs.bun
-	pkgs.nodePackages.pnpm
+    pkgs.nodePackages.pnpm
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -130,17 +131,17 @@
       plugins = ["git" "direnv" "fzf" "vi-mode"];
     };
     initExtra = ''
-			[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-             source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-             source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/direnv/direnv.plugin.zsh
-             source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/fzf/fzf.plugin.zsh
-             source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/vi-mode/vi-mode.plugin.zsh
+      [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+                source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+                source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/direnv/direnv.plugin.zsh
+                source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/fzf/fzf.plugin.zsh
+                source ${pkgs.oh-my-zsh}/share/oh-my-zsh/plugins/vi-mode/vi-mode.plugin.zsh
 
-			# Set env vars here, because sessionVariables is not working as I've
-			# expected
-			NODE_PATH="$HOME/.npm-packages/lib/node_modules";
-			PNPM_HOME="$HOME/.local/share/pnpm";
-			PATH="$HOME/.local/share/pnpm:$PATH";
+      # Set env vars here, because sessionVariables is not working as I've
+      # expected
+      NODE_PATH="$HOME/.npm-packages/lib/node_modules";
+      PNPM_HOME="$HOME/.local/share/pnpm";
+      PATH="$HOME/.local/share/pnpm:$PATH";
     '';
   };
 
@@ -191,4 +192,3 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
-
